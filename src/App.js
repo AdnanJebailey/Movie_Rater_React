@@ -55,6 +55,11 @@ function App() {
 
   }
 
+  const removeClicked = movie => {
+    const newMovies = movies.filter( mov => mov.id !== movie.id)
+    setMovie(newMovies);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -62,7 +67,13 @@ function App() {
       </header>
       <div className="layout">
         <div>
-          <MovieList movies={movies} movieClicked={loadMovie} editClicked={editClicked}/>
+          <MovieList 
+          movies={movies} 
+          movieClicked={loadMovie} 
+          editClicked={editClicked}
+          removeClicked={removeClicked}
+
+          />
           <button onClick={ newMovie }>New Movie</button>
         </div>
           <MovieDetails movie={selectedmovie} updateMovie={loadMovie}/>
